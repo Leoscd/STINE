@@ -12,7 +12,14 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Cargar datos
-file_path = "/home/leodiazdt/dashboard-ppe-2024-25/PPE RECSO CAMPAÑA 2024-25 Regiones Pampeanas 2.csv"
+import os
+# Usar ruta relativa para compatibilidad con Streamlit Cloud
+file_path = "PPE RECSO CAMPAÑA 2024-25 Regiones Pampeanas 2.csv"
+
+# Si no existe, intentar con ruta absoluta (para ejecución local)
+if not os.path.exists(file_path):
+    file_path = "/home/leodiazdt/dashboard-ppe-2024-25/PPE RECSO CAMPAÑA 2024-25 Regiones Pampeanas 2.csv"
+
 df = pd.read_csv(file_path, sep=';', encoding='utf-8-sig')
 
 # Convertir fechas
